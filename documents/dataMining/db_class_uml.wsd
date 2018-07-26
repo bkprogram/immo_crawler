@@ -1,0 +1,81 @@
+@startuml
+class Category{
+    array area_level
+    array rent_level
+    array price_level
+    array priece_level
+    array room_level
+    array living_rooms_level
+    bool asc
+    array charge_copo_level_year
+    bool current_announce
+    int duration
+}
+
+class Purchase{
+    string announce_num
+    string city
+    string zone
+    int price
+    int area
+    int pieces
+    int rooms
+    int living_rooms
+    bool asc
+    date research_date
+    date announce_date
+    date announce_end_date
+    bool current_announce
+    int duration
+}
+
+class Rent{
+    string announce_num
+    string city
+    string zone
+    int rent 
+    int area
+    bool furnitured
+    int pieces
+    int rooms
+    int living_rooms
+    bool asc
+    date research_date
+    date announce_date
+    date announce_end_date
+    bool current_announce
+    int duration
+}
+
+class Renta{
+    string city
+    string zone
+    int area
+    int pieces
+    int rooms
+    bool furnitured
+    int lk_avg_area_level
+    int lk_avg_rent_level
+    int lk_avg_price_level
+    int lk_avg_pieces_level
+    int lk_avg_rooms_level
+    int lk_avg_living_rooms_level
+    bool asc
+    int avg_charge_copo_level_year
+}
+
+class User_habit{
+    bool registed_user
+    string user_name
+    string user_navigater
+    string visite_times
+    array[{}] city_time_visited
+}
+
+Category -- Purchase
+Category -- Rent
+Renta -- Purchase
+Renta -- Rent
+User_habit -- Purchase
+User_habit -- Rent
+@enduml

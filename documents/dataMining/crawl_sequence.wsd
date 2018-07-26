@@ -1,0 +1,16 @@
+@startuml
+participant crawler_purchase
+participant crawler_rent
+participant calculator
+database db
+
+crawler_purchase -> db: Save purchase crawl result to db
+crawler_purchase -> crawler_rent: Finish purchase crawler
+crawler_rent-> db: Save rent crawl result to db
+crawler_rent -> calculator: Finish purchase crawler
+activate calculator
+calculator -> db: Get purchase and rent data
+calculator -> calculator: Calculate the rentability
+calculator -> db: Save the rentalbility
+deactivate calculator
+@enduml

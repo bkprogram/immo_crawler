@@ -1,0 +1,99 @@
+@startuml
+note  "find_xx() methods return None\
+\n if nothing is found" as N1
+
+package "Announce Collections" #DDDDDD {
+  DBAnnounce <|-- DBRent
+  DBAnnounce <|-- DBPurchase
+}
+
+class Category{
+    +Document find_current_announce(bool)
+    +Document find_asc(bool)
+    +Document find_area_level(int)
+    +Document find_rent_level(int)
+    +Document find_price_level(int)
+    +Document find_prieces_level(int)
+    +Document find_rooms_level(int)
+    +Document find_living_rooms_level(int)
+    +Document find_charge_copo_level_year(int)
+    +Document find_duration(int)
+}
+class DBGeneral {
+    Client createClient()
+    void closeClient()
+} 
+
+class DBAnnounce {
+    +InsertOneResult insert_asc(bool)
+    +Document find_asc()
+    +InsertOneResult insert_city(string)
+    +Document find_city()
+    +InsertOneResult insert_zone(string)
+    +Document find_zone()
+    +InsertOneResult insert_area(int)
+    +Document find_area()
+    +InsertOneResult insert_pieces(int)
+    +Document find_pieces()
+    +InsertOneResult insert_rooms(int)
+    +Document find_rooms()
+    +InsertOneResult insert_duration(int)
+    +Document find_duration()
+    +InsertOneResult insert_living_rooms(int)
+    +Document find_living_rooms()
+    +InsertOneResult research_date(Date)
+    +Document research_date()
+    +InsertOneResult announce_date(Date)
+    +Document announce_date()
+    +InsertOneResult announce_end_date(Date)
+    +Document announce_end_date()
+}
+
+class DBRenta {
+    Client getClient()
+    +InsertOneResult insert_asc(bool)
+    ' +Document find_asc()
+    +InsertOneResult insert_city(string)
+    ' +Document find_city()
+    +InsertOneResult insert_area(int)
+    ' +Document find_area()
+    +InsertOneResult insert_pieces(int)
+    ' +Document find_pieces()
+    +InsertOneResult insert_rooms(int)
+    ' +Document find_rooms()
+    +InsertOneResult insert_furnitured(int)
+    ' +Document find_furnitured()
+    +InsertIneResult lk_avg_area_level(int)
+    +InsertIneResult lk_avg_rent_level(int)
+    +InsertIneResult lk_avg_price_level(int)
+    +InsertIneResult lk_avg_prieces_level(int)
+    +InsertIneResult lk_avg_rooms_level(int)
+    +InsertIneResult lk_avg_living_rooms_level(int)
+    +InsertIneResult lk_avg_charge_copo_level_year(int)
+}
+
+class DBUserHabite {
+    Client getClient()
+    +InsertOneResult insert_registed_user(bool)
+}
+
+class DBPurchase {
+    Client getClient()
+    +InsertOneResult insert_price(int)
+    ' +Document find_price()
+}
+
+class DBRent {
+    Client getClient()
+    +InsertOneResult insert_rent(int)
+    +Docuement find_rent()
+    +InsertOneResult insert_furnitured(int)
+    +Document find_furnitured()
+}
+
+Category *-- DBRenta
+DBGeneral *-- DBRenta
+DBGeneral *-- DBUserHabite
+DBGeneral *-- DBRent
+DBGeneral *-- DBPurchase
+@enduml
